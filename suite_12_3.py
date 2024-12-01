@@ -1,6 +1,6 @@
 import unittest
-from test_runner import RunnerTest
-from test_tournament import TournamentTest
+from test_runner1 import RunnerTest
+from test_tournament1 import TournamentTest
 
 def suite():
     test_suite = unittest.TestSuite()
