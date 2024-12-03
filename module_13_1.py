@@ -1,18 +1,3 @@
-import time
-import asyncio
-async def notification():
-    time.sleep(10)
-    print('До доставки 10 минут')
-
-async def main():
-    task = asyncio.create_task(notification())
-    print('Собираемся в поездку')
-    print('Едем')
-
-asyncio.run(main())
-
-
-
 import asyncio
 
 async def start_strongman(name, power):
@@ -30,5 +15,4 @@ async def start_tournament():
     ]
     await asyncio.gather(*tasks)
 
-# Запуск асинхронной функции start_tournament
 asyncio.run(start_tournament())
