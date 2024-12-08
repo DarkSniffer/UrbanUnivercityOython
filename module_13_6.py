@@ -7,7 +7,7 @@ from aiogram.types import ParseMode, ReplyKeyboardMarkup, KeyboardButton, Inline
 from aiogram.utils import executor
 
 
-api = '7677773567:AAGXrlyrLZVkNjJ8V4vjQmnjwGHvbso8_hM'
+api = ''
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
