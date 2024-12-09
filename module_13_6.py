@@ -25,6 +25,12 @@ inline_keyboard = InlineKeyboardMarkup()
 inline_keyboard.add(InlineKeyboardButton('Рассчитать норму калорий', callback_data='calories'))
 inline_keyboard.add(InlineKeyboardButton('Формулы расчёта', callback_data='formulas'))
 
+
+@dp.message_handler()
+async def all_message (message):
+    await message.answer('Введите команду /start чтобы начать общение')
+
+
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
     await message.reply("Привет! Я помогу вам рассчитать норму калорий. Выберите действие:", reply_markup=keyboard)
