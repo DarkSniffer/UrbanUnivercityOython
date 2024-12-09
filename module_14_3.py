@@ -30,8 +30,6 @@ for i in range(1, 5):
     buying_inline_keyboard.add(InlineKeyboardButton(f'Product{i}', callback_data='product_buying'))
 
 
-
-
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
     await message.reply("Привет! Я помогу вам рассчитать норму калорий. Выберите действие:", reply_markup=keyboard)
@@ -39,6 +37,10 @@ async def send_welcome(message: types.Message):
 @dp.message_handler(lambda message: message.text == 'Рассчитать')
 async def main_menu(message: types.Message):
     await message.reply("Выберите опцию:", reply_markup=inline_keyboard)
+    
+@dp.message_handler(lambda message: message.text == 'Информация')
+async def send_info(message: types.Message):
+    await message.reply("Этот бот помогает рассчитать норму калорий и покупать продукты.")
 
 @dp.callback_query_handler(lambda call: call.data == 'formulas')
 async def get_formulas(call: types.CallbackQuery):
@@ -87,6 +89,13 @@ async def get_buying_list(message: types.Message):
 async def send_confirm_message(call: types.CallbackQuery):
     await call.message.reply("Вы успешно приобрели продукт!")
     await call.answer()
+
+
+@dp.message_handler(content_types=types.ContentTypes.ANY)
+async def all_messages(message: types.Message):
+    print('Введите команду /start чтобы начать общение')
+    await message.answer('Введите команду /start чтобы начать общение')
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
