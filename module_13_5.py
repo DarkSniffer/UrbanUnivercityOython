@@ -19,6 +19,10 @@ keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 keyboard.add(KeyboardButton('Рассчитать'))
 keyboard.add(KeyboardButton('Информация'))
 
+@dp.message_handler()
+async def all_message (message):
+    await message.answer('Введите команду /start чтобы начать общение')
+
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
     await message.reply("Привет! Я помогу вам рассчитать норму калорий. Выберите действие:", reply_markup=keyboard)
