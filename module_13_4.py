@@ -13,6 +13,10 @@ class UserState(StatesGroup):
     growth = State()
     weight = State()
 
+@dp.message_handler()
+async def all_message (message):
+    await message.answer('Введите команду /start чтобы начать общение')
+
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
     await message.answer("Привет! Я помогу вам рассчитать норму калорий. Напишите 'Calories', чтобы начать.")
